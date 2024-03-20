@@ -1,13 +1,13 @@
-﻿@page "/auth"
+﻿@page "/msg"
 
 @using Microsoft.AspNetCore.Authorization
 
 @attribute [Authorize]
 @rendermode InteractiveAuto
 
-<PageTitle>Auth</PageTitle>
+<PageTitle>Messages</PageTitle>
 
-<h1>You are authenticated</h1>
+<h1>Messages</h1>
 
 <AuthorizeView>
     Hello @context.User.Identity?.Name!

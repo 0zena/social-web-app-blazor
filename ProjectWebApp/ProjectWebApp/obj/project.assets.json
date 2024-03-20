@@ -5022,24 +5022,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\USER\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\dizel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ProductDev\\ProjectWebAppSolution\\ProjectWebApp\\ProjectWebApp\\ProjectWebApp.csproj",
+      "projectUniqueName": "C:\\Users\\dizel\\Desktop\\social-web-app-blazor\\ProjectWebApp\\ProjectWebApp\\ProjectWebApp.csproj",
       "projectName": "ProjectWebApp",
-      "projectPath": "D:\\ProductDev\\ProjectWebAppSolution\\ProjectWebApp\\ProjectWebApp\\ProjectWebApp.csproj",
-      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "D:\\ProductDev\\ProjectWebAppSolution\\ProjectWebApp\\ProjectWebApp\\obj\\",
+      "projectPath": "C:\\Users\\dizel\\Desktop\\social-web-app-blazor\\ProjectWebApp\\ProjectWebApp\\ProjectWebApp.csproj",
+      "packagesPath": "C:\\Users\\dizel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dizel\\Desktop\\social-web-app-blazor\\ProjectWebApp\\ProjectWebApp\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\dizel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5047,15 +5042,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://www.myget.org/F/discord-net/api/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\ProductDev\\ProjectWebAppSolution\\ProjectWebApp\\ProjectWebApp.Client\\ProjectWebApp.Client.csproj": {
-              "projectPath": "D:\\ProductDev\\ProjectWebAppSolution\\ProjectWebApp\\ProjectWebApp.Client\\ProjectWebApp.Client.csproj"
+            "C:\\Users\\dizel\\Desktop\\social-web-app-blazor\\ProjectWebApp\\ProjectWebApp.Client\\ProjectWebApp.Client.csproj": {
+              "projectPath": "C:\\Users\\dizel\\Desktop\\social-web-app-blazor\\ProjectWebApp\\ProjectWebApp.Client\\ProjectWebApp.Client.csproj"
             }
           }
         }
@@ -5064,6 +5058,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -5110,7 +5109,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
