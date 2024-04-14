@@ -96,6 +96,7 @@ using (var scope = app.Services.CreateScope())
         var newUser = new ApplicationUser();
         newUser.Email = email;
         newUser.UserName = email;
+        newUser.EmailConfirmed = true;
             
         await userManager.CreateAsync(newUser, password);
 
