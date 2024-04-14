@@ -89,7 +89,7 @@ using (var scope = app.Services.CreateScope())
 
     // For testing purposes only
     string email = "admin@admin.com";
-    string password = "AdminTemp*731*";
+    string password = "AdminTemp731*";
 
     if (await userManager.FindByEmailAsync(email) == null)
     {
