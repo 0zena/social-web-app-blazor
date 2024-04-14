@@ -32,6 +32,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
+    .AddUserManager<UserManager<ApplicationUser>>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
@@ -84,8 +85,22 @@ using (var scope = app.Services.CreateScope())
 // Add a simple admin account to our database
 using (var scope = app.Services.CreateScope())
 {
-    var userManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityUser>>();
-    
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+    // For testing purposes only
+    string email = "admin@admin.com";
+    string password = "AdminTemp*731*";
+
+    if (await userManager.FindByEmailAsync(email) == null)
+    {
+        var newUser = new ApplicationUser();
+        newUser.Email = email;
+        newUser.UserName = email;
+            
+        await userManager.CreateAsync(newUser, password);
+
+        await userManager.AddToRoleAsync(newUser, "Admin");
+    }
 }
 
 app.Run();
