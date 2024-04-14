@@ -1,0 +1,6 @@
+.idea
+.vs
+ProjectWebApp/ProjectWebApp/bin
+ProjectWebApp/ProjectWebApp/obj
+ProjectWebApp/ProjectWebApp.Client/bin
+ProjectWebApp/ProjectWebApp.Client/obj
