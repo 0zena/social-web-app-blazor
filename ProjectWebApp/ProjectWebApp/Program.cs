@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using ProjectWebApp.Client.Pages;
 using ProjectWebApp.Components;
 using ProjectWebApp.Components.Account;
 using ProjectWebApp.Data;
+using ProjectWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,7 +39,9 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
     .AddSignInManager()
     .AddDefaultTokenProviders();
 
-builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+// Email sender config
+builder.Services.AddSingleton<IEmailSender<ApplicationUser>, EmailSender>();
+builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 var app = builder.Build();
 
