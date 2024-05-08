@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using ProjectWebApp.Client.Http.Services;
 using ProjectWebApp.Client.Pages;
 using ProjectWebApp.Components;
 using ProjectWebApp.Components.Account;
@@ -42,6 +42,10 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
 // Email sender config
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
+
+// PostHttpService
+builder.Services.AddSingleton<HttpClient>();
+builder.Services.AddSingleton<IPostHttpService, PostHttpService>();
 
 var app = builder.Build();
 
@@ -92,16 +96,18 @@ using (var scope = app.Services.CreateScope())
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
     // For testing purposes only
-    string email = "admin@admin.com";
-    string password = "AdminTemp731*";
+    const string email = "admin@admin.com";
+    const string password = "AdminTemp731*";
 
     if (await userManager.FindByEmailAsync(email) == null)
     {
-        var newUser = new ApplicationUser();
-        newUser.Email = email;
-        newUser.UserName = email;
-        newUser.EmailConfirmed = true;
-            
+        var newUser = new ApplicationUser
+        {
+            Email = email,
+            UserName = email,
+            EmailConfirmed = true
+        };
+
         await userManager.CreateAsync(newUser, password);
 
         await userManager.AddToRoleAsync(newUser, "Admin");

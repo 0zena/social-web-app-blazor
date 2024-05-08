@@ -23,7 +23,7 @@ public class EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor, ILo
         string resetCode) => SendEmailAsync(email, "Reset your password", 
         $"Please reset your password using the following code: {resetCode}");
 
-    public async Task SendEmailAsync(string toEmail, string subject, string message)
+    private async Task SendEmailAsync(string toEmail, string subject, string message)
     {
         if (string.IsNullOrEmpty(Options.SendGridKey))
         {

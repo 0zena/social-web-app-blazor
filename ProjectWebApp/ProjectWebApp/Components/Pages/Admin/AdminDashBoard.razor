@@ -1,0 +1,47 @@
+@page "/Admin/Dashboard"
+@attribute [Authorize(Roles = "Admin")]
+
+@using Microsoft.AspNetCore.Identity
+@using ProjectWebApp.Data
+@using Microsoft.AspNetCore.Authorization
+
+@inject UserManager<ApplicationUser> UserManager
+
+<h3>Admin Dashboard</h3>
+
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>EmailConfirmed</th>
+        <th>Options</th>
+    </tr>
+    @foreach (var user in GetUsers())
+    {
+        <tr >
+            <td>@user.Id</td>
+            <td>@user</td>
+            <td>@user.EmailConfirmed</td>
+            <td><button>Delete</button></td>
+        </tr>        
+    }
+</table>
+
+@code {
+    protected override void OnInitialized()
+    {
+        GetUsers();
+    }
+
+    private List<ApplicationUser> GetUsers()
+    {
+        var users = new List<ApplicationUser>();
+        
+        foreach (var user in UserManager.Users)
+        {
+            users.Add(user);
+        }
+
+        return users;
+    }
+}
