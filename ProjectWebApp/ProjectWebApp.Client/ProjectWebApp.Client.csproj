@@ -15,10 +15,7 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\Post\PostPage.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="Pages\Post\Creator\PostCreator.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Post\Creator\PostCreator.razor" />
   </ItemGroup>
 
 </Project>

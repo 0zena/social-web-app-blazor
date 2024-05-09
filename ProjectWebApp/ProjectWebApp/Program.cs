@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ProjectWebApp.Client.Http.Services;
 using ProjectWebApp.Client.Pages;
 using ProjectWebApp.Components;
 using ProjectWebApp.Components.Account;
@@ -42,10 +41,6 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
 // Email sender config
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, EmailSender>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
-
-// PostHttpService
-builder.Services.AddSingleton<HttpClient>();
-builder.Services.AddSingleton<IPostHttpService, PostHttpService>();
 
 var app = builder.Build();
 

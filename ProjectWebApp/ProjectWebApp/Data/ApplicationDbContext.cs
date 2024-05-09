@@ -13,6 +13,8 @@ namespace ProjectWebApp.Data
         public DbSet<Like>? Likes { get; set; }
         
         public DbSet<Dislike>? Dislikes { get; set; }
+        
+        
     }
 
 }

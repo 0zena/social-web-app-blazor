@@ -11,7 +11,7 @@ namespace ProjectWebApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Post",
+                name: "Posts",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -29,7 +29,7 @@ namespace ProjectWebApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Post");
+                name: "Posts");
         }
     }
 }
