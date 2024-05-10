@@ -18,12 +18,7 @@
     </tr>
     @foreach (var user in GetUsers())
     {
-        <tr >
-            <td>@user.Id</td>
-            <td>@user</td>
-            <td>@user.EmailConfirmed</td>
-            <td><button>Delete</button></td>
-        </tr>        
+        <DashBoardUserItem User="user"/>        
     }
 </table>
 

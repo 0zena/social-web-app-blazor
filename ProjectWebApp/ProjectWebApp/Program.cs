@@ -98,6 +98,7 @@ using (var scope = app.Services.CreateScope())
     {
         var newUser = new ApplicationUser
         {
+            Id = "c48038b3-2c94-4114-909b-db13408aded4",
             Email = email,
             UserName = email,
             EmailConfirmed = true

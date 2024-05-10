@@ -1,0 +1,31 @@
+@attribute [Authorize(Roles = "Admin")]
+
+@using Microsoft.AspNetCore.Identity
+@using ProjectWebApp.Data
+@using Microsoft.AspNetCore.Authorization
+
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+
+<tr >
+    <td>@User.Id</td>
+    <td>@User</td>
+    <td>@User.EmailConfirmed</td>
+    <td><button >Delete</button></td>
+</tr>
+
+
+@code {
+    [Parameter] public ApplicationUser User { get; set; } = null!;
+
+    private async Task Delete()
+    {
+        var result = await UserManager.DeleteAsync(User);
+        if (!result.Succeeded)
+        {
+            throw new InvalidOperationException("Unexpected error occurred deleting user.");
+        }
+        
+        StateHasChanged();
+    }
+}

@@ -2,7 +2,11 @@
 @using ProjectWebApp.Models
 @using ProjectWebApp.Data
 @using System.ComponentModel.DataAnnotations
+@using ProjectWebApp.Components.Account
+
 @inject ApplicationDbContext Context
+@inject IdentityUserAccessor UserAccessor
+@inject IdentityRedirectManager RedirectManager
 
 <PageTitle>Post creator</PageTitle>
 
@@ -31,19 +35,24 @@
     
     [SupplyParameterFromQuery]
     private string? ReturnUrl { get; set; }
+    
+    [CascadingParameter]
+    private HttpContext HttpContext { get; set; } = default!;
+    
 
     public async Task Create()
     {
-        Console.WriteLine("InputModel:" + Input.Title, Input.Bio);
         var post = new Post
         {
             Title = Input.Title,
-            Bio = Input.Bio
+            Bio = Input.Bio,
+            User = await UserAccessor.GetRequiredUserAsync(HttpContext)
         };
 
         Context.Add(post);
         await Context.SaveChangesAsync();
         StateHasChanged();
+        RedirectManager.RedirectTo("/");
     }
 
     public sealed class InputModel

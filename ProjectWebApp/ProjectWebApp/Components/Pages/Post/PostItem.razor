@@ -1,0 +1,25 @@
+@using ProjectWebApp.Data
+@using ProjectWebApp.Models
+@inject ApplicationDbContext Context
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">@Post.Title</h4>
+        <div class="card-text">@Post.Bio</div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public Post Post { get; set; } = null!;
+}
+
+<style>
+    .card {
+        display: inline-block;
+        width: 100%;
+        max-width: 100%;
+        word-break: break-word;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+</style>
