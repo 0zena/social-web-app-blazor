@@ -1,0 +1,16 @@
+﻿@page "/"
+
+
+<h4>Newest posts</h4>
+
+<main>
+    @foreach (var post in Context.Posts!)
+    {
+        <span>
+            <NavLink class="btn-link" href=@($"/Posts/{post.ID}")>
+                <PostItem Post="@post"/>
+            </NavLink>
+        </span>
+        <hr/>
+    }
+</main>

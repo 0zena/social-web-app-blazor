@@ -12,34 +12,34 @@ namespace ProjectWebApp.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_Comment_AspNetUsers_UserId",
-                table: "Comment");
+                table: "Comments");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Comment_Posts_PostID",
-                table: "Comment");
+                table: "Comments");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Dislike_AspNetUsers_UserId",
-                table: "Dislike");
+                table: "Dislikes");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Dislike_Posts_PostID",
-                table: "Dislike");
+                table: "Dislikes");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Dislike",
-                table: "Dislike");
+                table: "Dislikes");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Comment",
-                table: "Comment");
+                table: "Comments");
 
             migrationBuilder.RenameTable(
-                name: "Dislike",
+                name: "Dislikes",
                 newName: "Dislikes");
 
             migrationBuilder.RenameTable(
-                name: "Comment",
+                name: "Comments",
                 newName: "Comments");
 
             migrationBuilder.RenameIndex(
@@ -187,30 +187,30 @@ namespace ProjectWebApp.Migrations
 
             migrationBuilder.RenameTable(
                 name: "Dislikes",
-                newName: "Dislike");
+                newName: "Dislikes");
 
             migrationBuilder.RenameTable(
                 name: "Comments",
-                newName: "Comment");
+                newName: "Comments");
 
             migrationBuilder.RenameIndex(
                 name: "IX_Dislikes_UserId",
-                table: "Dislike",
+                table: "Dislikes",
                 newName: "IX_Dislike_UserId");
 
             migrationBuilder.RenameIndex(
                 name: "IX_Dislikes_PostID",
-                table: "Dislike",
+                table: "Dislikes",
                 newName: "IX_Dislike_PostID");
 
             migrationBuilder.RenameIndex(
                 name: "IX_Comments_UserId",
-                table: "Comment",
+                table: "Comments",
                 newName: "IX_Comment_UserId");
 
             migrationBuilder.RenameIndex(
                 name: "IX_Comments_PostID",
-                table: "Comment",
+                table: "Comments",
                 newName: "IX_Comment_PostID");
 
             migrationBuilder.AlterColumn<string>(
@@ -237,7 +237,7 @@ namespace ProjectWebApp.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "UserId",
-                table: "Dislike",
+                table: "Dislikes",
                 type: "nvarchar(450)",
                 nullable: false,
                 defaultValue: "",
@@ -247,31 +247,31 @@ namespace ProjectWebApp.Migrations
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Dislike",
-                table: "Dislike",
+                table: "Dislikes",
                 column: "Id");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Comment",
-                table: "Comment",
+                table: "Comments",
                 column: "Id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Comment_AspNetUsers_UserId",
-                table: "Comment",
+                table: "Comments",
                 column: "UserId",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Comment_Posts_PostID",
-                table: "Comment",
+                table: "Comments",
                 column: "PostID",
                 principalTable: "Posts",
                 principalColumn: "ID");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Dislike_AspNetUsers_UserId",
-                table: "Dislike",
+                table: "Dislikes",
                 column: "UserId",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id",
@@ -279,7 +279,7 @@ namespace ProjectWebApp.Migrations
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Dislike_Posts_PostID",
-                table: "Dislike",
+                table: "Dislikes",
                 column: "PostID",
                 principalTable: "Posts",
                 principalColumn: "ID",

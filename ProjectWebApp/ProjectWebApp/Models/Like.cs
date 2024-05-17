@@ -10,8 +10,5 @@ public class Like
     
     public ApplicationUser User { get; set; }
     
-    // Navigation property
     public Post Post { get; set; }
-    
-    public int PostId { get; set; }
 }

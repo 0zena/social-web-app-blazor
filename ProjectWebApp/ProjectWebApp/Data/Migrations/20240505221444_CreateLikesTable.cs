@@ -12,7 +12,7 @@ namespace ProjectWebApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Comment",
+                name: "Comments",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -38,7 +38,7 @@ namespace ProjectWebApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Dislike",
+                name: "Dislikes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -92,22 +92,22 @@ namespace ProjectWebApp.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_PostID",
-                table: "Comment",
+                table: "Comments",
                 column: "PostID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_UserId",
-                table: "Comment",
+                table: "Comments",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Dislike_PostID",
-                table: "Dislike",
+                table: "Dislikes",
                 column: "PostID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Dislike_UserId",
-                table: "Dislike",
+                table: "Dislikes",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -125,10 +125,10 @@ namespace ProjectWebApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Comment");
+                name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "Dislike");
+                name: "Dislikes");
 
             migrationBuilder.DropTable(
                 name: "Likes");

@@ -1,0 +1,11 @@
+.card {
+    display: inline-block;
+    width: 100%;
+    color: black;
+}
+
+.card-text, .card-title {
+    display: inline-block;
+    word-break: break-word;
+    width: 100%;
+}

@@ -1,14 +1,8 @@
-@page "/PostCreator"
-@using ProjectWebApp.Models
-@using ProjectWebApp.Data
-@using System.ComponentModel.DataAnnotations
-@using ProjectWebApp.Components.Account
-
-@inject ApplicationDbContext Context
-@inject IdentityUserAccessor UserAccessor
-@inject IdentityRedirectManager RedirectManager
+@page "/Post/Create"
 
 <PageTitle>Post creator</PageTitle>
+
+<h4>Create a new post</h4>
 
 <div class="row">
     <div class="col-md-4">
@@ -16,52 +10,13 @@
             <hr />
             <div class="form-floating mb-3">
                 <InputText @bind-Value="@Input.Title" class="form-control" autocomplete="untitled" aria-required="true" placeholder="Example post title" />
-                <label for="title">Title</label>
+                <label>Title</label>
             </div>
             <div class="form-floating mb-3">
                 <InputTextArea @bind-Value="@Input.Bio" class="form-control" aria-required="true" placeholder="in this case..." />
-                <label for="bio">Bio</label>
+                <label>Bio</label>
             </div>
             <button type="submit" class="w-100 btn btn-lg btn-primary">Publish</button>
         </EditForm>
     </div>
 </div>
-
-
-
-@code {
-    [SupplyParameterFromForm]
-    private InputModel Input { get; set; } = new();
-    
-    [SupplyParameterFromQuery]
-    private string? ReturnUrl { get; set; }
-    
-    [CascadingParameter]
-    private HttpContext HttpContext { get; set; } = default!;
-    
-
-    public async Task Create()
-    {
-        var post = new Post
-        {
-            Title = Input.Title,
-            Bio = Input.Bio,
-            User = await UserAccessor.GetRequiredUserAsync(HttpContext)
-        };
-
-        Context.Add(post);
-        await Context.SaveChangesAsync();
-        StateHasChanged();
-        RedirectManager.RedirectTo("/");
-    }
-
-    public sealed class InputModel
-    {
-        [Display(Name = "Title")]
-        public string Title { get; set; } = string.Empty;
-        
-        [Display(Name = "Bio")]
-        public string Bio { get; set; } = string.Empty;
-    }
-
-}
