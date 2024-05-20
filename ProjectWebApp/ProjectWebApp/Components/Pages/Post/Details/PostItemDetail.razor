@@ -1,4 +1,7 @@
 @page "/Posts/{id:int}"
+@attribute [Authorize]
+
+@using Microsoft.AspNetCore.Authorization
 
 <header>
     <h4>Author: @Author?.Id</h4>

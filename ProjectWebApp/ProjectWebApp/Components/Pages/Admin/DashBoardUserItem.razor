@@ -11,7 +11,7 @@
     <td>@User.Id</td>
     <td>@User</td>
     <td>@User.EmailConfirmed</td>
-    <td><button >Delete</button></td>
+    <td><EditForm Model="User" OnValidSubmit="Delete" FormName=@($"delete-user-{User.Id}") ><button type="submit">Delete</button></EditForm></td>
 </tr>
 
 

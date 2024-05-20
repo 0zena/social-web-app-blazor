@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.card {
+    width: 30%;
+    border-radius: 20px;
+}
+
+.card, .card-title, .card-text, .card-footer, .card-body {
+    color: white;
+    background-color: #564f70;
+}
+
+@media (max-width: 800px) {
+    .card {
+        width: 100%;
+        margin: 5px 0 0 0;
+    }
+}
