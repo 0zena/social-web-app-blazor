@@ -9,6 +9,7 @@
 @inject IdentityUserAccessor UserAccessor
 @inject IdentityRedirectManager RedirectManager
 @inject ILogger<DeletePersonalData> Logger
+@inject ApplicationDbContext Context
 
 <PageTitle>Delete Personal Data</PageTitle>
 
@@ -35,6 +36,11 @@
             </div>
         }
         <button class="w-100 btn btn-lg btn-danger" type="submit">Delete data and close my account</button>
+    </EditForm>
+</div>
+<div>
+    <EditForm Model="Context" FormName="delete-blog" OnValidSubmit="DeleteUsersBlog" method="post">
+        <button class="w-100 btn btn-lg btn-danger" type="submit">Delete blog</button>
     </EditForm>
 </div>
 
@@ -78,6 +84,23 @@
         RedirectManager.RedirectToCurrentPage();
     }
 
+    private async Task DeleteUsersBlog()
+    {
+        await using (Context)
+        {
+            var posts = from p in Context.Posts
+                where p.User.Equals(user)
+                select p;
+
+            foreach (var post in posts)
+            {
+                Context?.Posts!.Remove(post);
+            }
+            await Context!.SaveChangesAsync();
+        }
+
+    }
+    
     private sealed class InputModel
     {
         [DataType(DataType.Password)]

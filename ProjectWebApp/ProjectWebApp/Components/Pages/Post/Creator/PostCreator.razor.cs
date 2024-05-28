@@ -24,19 +24,21 @@ public partial class PostCreator
 
     [Inject]
     private IdentityRedirectManager RedirectManager { get; set; } = null!;
-
+    
+    private readonly DateTime _dateTime = DateTime.Now;
+    
     public async Task Create()
     {
         var post = new Models.Post
         {
             Title = Input.Title,
             Bio = Input.Bio,
-            User = await UserAccessor.GetRequiredUserAsync(HttpContext)
+            User = await UserAccessor.GetRequiredUserAsync(HttpContext),
+            Date = _dateTime
         };
 
         Context.Add(post);
         await Context.SaveChangesAsync();
-        StateHasChanged();
         RedirectManager.RedirectTo("/");
     }
 

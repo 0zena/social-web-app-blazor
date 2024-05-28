@@ -6,19 +6,37 @@
 
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
+@inject ApplicationDbContext Context
 
 <tr >
     <td>@User.Id</td>
     <td>@User</td>
     <td>@User.EmailConfirmed</td>
-    <td><EditForm Model="User" OnValidSubmit="Delete" FormName=@($"delete-user-{User.Id}") ><button type="submit">Delete</button></EditForm></td>
+    <td><EditForm Model="User" OnValidSubmit="DeleteUserBlog" FormName=@($"delete-user-{User.Id}-blog") ><button type="submit">Delete blog</button></EditForm></td>
+    <td><EditForm Model="User" OnValidSubmit="DeleteUserProfile" FormName=@($"delete-user-{User.Id}-profile") ><button type="submit">Delete profile</button></EditForm></td>
 </tr>
 
 
 @code {
     [Parameter] public ApplicationUser User { get; set; } = null!;
 
-    private async Task Delete()
+    private async Task DeleteUserBlog()
+    {
+        await using (Context)
+        {
+            var posts = from p in Context.Posts
+                where p.User.Equals(User)
+                select p;
+
+            foreach (var post in posts)
+            {
+                Context?.Posts!.Remove(post);
+            }
+            await Context!.SaveChangesAsync();
+        }
+    }
+
+    private async Task DeleteUserProfile()
     {
         var result = await UserManager.DeleteAsync(User);
         if (!result.Succeeded)

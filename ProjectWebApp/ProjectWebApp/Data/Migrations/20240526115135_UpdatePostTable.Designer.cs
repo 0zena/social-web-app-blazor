@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectWebApp.Data;
 
@@ -11,9 +12,11 @@ using ProjectWebApp.Data;
 namespace ProjectWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240526115135_UpdatePostTable")]
+    partial class UpdatePostTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,7 +238,7 @@ namespace ProjectWebApp.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PostID")
+                    b.Property<int?>("PostID")
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
@@ -314,9 +317,6 @@ namespace ProjectWebApp.Migrations
                         .HasMaxLength(5000)
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Title")
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
@@ -386,9 +386,7 @@ namespace ProjectWebApp.Migrations
                 {
                     b.HasOne("ProjectWebApp.Models.Post", "Post")
                         .WithMany("Comments")
-                        .HasForeignKey("PostID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PostID");
 
                     b.HasOne("ProjectWebApp.Data.ApplicationUser", "User")
                         .WithMany()
@@ -436,10 +434,15 @@ namespace ProjectWebApp.Migrations
             modelBuilder.Entity("ProjectWebApp.Models.Post", b =>
                 {
                     b.HasOne("ProjectWebApp.Data.ApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("Posts")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ProjectWebApp.Data.ApplicationUser", b =>
+                {
+                    b.Navigation("Posts");
                 });
 
             modelBuilder.Entity("ProjectWebApp.Models.Post", b =>

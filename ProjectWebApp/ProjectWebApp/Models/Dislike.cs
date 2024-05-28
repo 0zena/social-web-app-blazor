@@ -8,8 +8,8 @@ public class Dislike
     
     public DateTime Date { get; set; }
     
-    public ApplicationUser User { get; set; }
+    public required ApplicationUser User { get; set; }
     
-    public Post Post { get; set; }
+    public required Post Post { get; set; }
     
 }

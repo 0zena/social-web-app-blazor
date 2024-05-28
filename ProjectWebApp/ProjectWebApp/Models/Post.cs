@@ -12,8 +12,10 @@ public class Post
     [MaxLength(150)]
     public string? Title { get; set; }
     
-    [MaxLength(1000)]
+    [MaxLength(5000)]
     public string? Bio { get; set; }
+    
+    public DateTime Date { get; set; }
     
     public required ApplicationUser User { get; set; }
     

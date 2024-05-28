@@ -5,7 +5,7 @@ using ProjectWebApp.Models;
 
 namespace ProjectWebApp.Components.Pages.Post.Details;
 
-public partial class PostItemDetail
+public partial class PostItemDetail : ComponentBase
 {
     [Parameter]
     public int Id { get; set; }
@@ -27,13 +27,13 @@ public partial class PostItemDetail
     private readonly DateTime _dateTime = DateTime.Now;
 
     private string Title => Post?.Title ?? "Untitled";
-
-    private ApplicationUser? Author { get; set; }
     
     protected override void OnInitialized()
     {
         Post = Context.Posts?.Find(Id)!;
+        var some = Post.User;
     }
+    
 
     private async Task LikePost()
     {
