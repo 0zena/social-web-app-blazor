@@ -1,0 +1,18 @@
+@using Radzen.Blazor
+@using Radzen
+
+
+<RadzenStack>
+
+    @if (Comments != null)
+    {
+        foreach (var comment in Comments)
+        {
+            <CommentsItem Comment="comment"/>
+        }
+    } else {
+        <RadzenText>There is no comments yet</RadzenText>
+    }
+
+</RadzenStack>
+
