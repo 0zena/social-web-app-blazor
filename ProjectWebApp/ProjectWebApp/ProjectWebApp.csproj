@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Radzen.Blazor" Version="4.32.2" />
     <PackageReference Include="SendGrid" Version="9.29.3" />
     <ProjectReference Include="..\ProjectWebApp.Client\ProjectWebApp.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.0" />
