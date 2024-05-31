@@ -4,17 +4,22 @@
 @using Microsoft.AspNetCore.Identity
 @using ProjectWebApp.Data
 @using Microsoft.AspNetCore.Authorization
+@using Radzen.Blazor
 
 @inject UserManager<ApplicationUser> UserManager
 
-<h3>Admin Dashboard</h3>
+<RadzenHeading Text="Admin Dashboard"></RadzenHeading>
+
+<div class="rz-p-sm-12 rz-text-align-center">
+    <RadzenTextBox Placeholder="Search..." class="w-50"></RadzenTextBox>
+</div>
 
 <table class="table table-striped">
     <tr>
-        <th>ID</th>
-        <th>Email</th>
-        <th>EmailConfirmed</th>
-        <th>Options</th>
+        <th><RadzenText Text="ID"></RadzenText></th>
+        <th><RadzenText Text="Email"></RadzenText></th>
+        <th><RadzenText Text="Email Confirmed"></RadzenText></th>
+        <th><RadzenText Text="Options"></RadzenText></th>
         <th></th>
     </tr>
     @foreach (var user in GetUsers())

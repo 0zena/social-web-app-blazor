@@ -4,9 +4,13 @@
 <h3>CommentCreator</h3>
 <EditForm Model="Model" OnValidSubmit="CreateComment" FormName="create-comment">
     <RadzenCard Variant="Variant.Flat">
-        <RadzenText>Share your thoughts</RadzenText>
+        <DataAnnotationsValidator />
         <RadzenCard>
-            <InputText @bind-Value="Model.Content"></InputText>
+        <div class="form-floating mb-3">
+            <InputText @bind-Value="Model.Content" class="w-100 form-control" DisplayName="Write something..."/>
+            <label>Write something...</label>
+        </div>
+        <ValidationMessage For="() => Model.Content"/>
         </RadzenCard>
         <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Start" Gap="0">
             <RadzenButton Variant="Variant.Text" ButtonStyle="ButtonStyle.Primary" Text="Publish" type="submit"></RadzenButton>

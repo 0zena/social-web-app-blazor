@@ -1,15 +1,14 @@
 using Microsoft.AspNetCore.Components;
 using ProjectWebApp.Data;
-using ProjectWebApp.Models;
 
-namespace ProjectWebApp.Components.Pages.Post.Details;
+namespace ProjectWebApp.Components.Pages.Comment;
 
 public partial class CommentsList : ComponentBase
 {
     [Parameter] 
     public Models.Post Post { get; set; } = null!;
     
-    private List<Comment>? Comments { get; set; }
+    private List<Models.Comment>? Comments { get; set; }
     
     [Inject] 
     private ApplicationDbContext Context { get; set; } = null!;

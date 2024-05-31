@@ -31,3 +31,23 @@
         <div class="card-footer">Log in or create a new <NavLink href="/Account/Login">account</NavLink></div>
     </div>
 </div>
+
+
+@code {
+    private IEnumerable<string> _sortType;
+
+    private string _type = "Oldest";
+
+    protected override void OnInitialized()
+    {
+        _sortType = new List<string> { "Oldest", "Newest" };
+        LoadPosts();
+    }
+    
+    private void LoadPosts()
+    {
+        StateHasChanged();
+    }
+    
+
+}

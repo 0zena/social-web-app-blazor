@@ -1,16 +1,30 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@using Radzen.Blazor
+@using Radzen
 
+<div class="page">
     <main>
         <div class="top-row px-4">
-            <a href="#">About</a>
+            <div class="container-fluid">
+                <NavLink href=""><RadzenButton Variant="Variant.Text" Text="Devs"></RadzenButton></NavLink>
+            </div>
+            <NavLink href="/Posts"><RadzenButton Variant="Variant.Text" Text="Posts"></RadzenButton></NavLink>
+            <AuthorizeView>
+                <NotAuthorized>
+                    <NavLink href="/Account/Login"><RadzenButton Variant="Variant.Text" Text="Login"></RadzenButton></NavLink>
+                </NotAuthorized>
+                <Authorized>
+                    <NavLink href="/Posts/Create"><RadzenButton Variant="Variant.Text" Text="Create"></RadzenButton></NavLink>
+                    <NavLink href="/Account/Manage"><RadzenButton Variant="Variant.Text" Text="Profile"></RadzenButton></NavLink>
+                </Authorized>
+            </AuthorizeView>
+            <AuthorizeView Roles="Admin">
+                <NavLink href="/Admin/Dashboard"><RadzenButton Variant="Variant.Text" Text="Dashboard"></RadzenButton></NavLink>
+            </AuthorizeView>
         </div>
 
-        <article class="content px-20">
+        <article class="content">
             @Body
         </article>
     </main>

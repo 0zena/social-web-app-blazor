@@ -2,9 +2,8 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Components;
 using ProjectWebApp.Components.Account;
 using ProjectWebApp.Data;
-using ProjectWebApp.Models;
 
-namespace ProjectWebApp.Components.Pages.Post.Details;
+namespace ProjectWebApp.Components.Pages.Comment;
 
 public partial class CommentCreator
 {
@@ -31,7 +30,7 @@ public partial class CommentCreator
 
     private async Task CreateComment()
     {
-        var comment = new Comment
+        var comment = new Models.Comment
         {
             Content = Model.Content,
             User = await UserAccessor.GetRequiredUserAsync(HttpContext),
@@ -46,7 +45,7 @@ public partial class CommentCreator
 
     private sealed class InputModel
     {
-        [Length(1, 200)] 
+        [StringLength(500, MinimumLength = 2, ErrorMessage = "Comment must be at 2 to 500 chars")] 
         public string Content { get; set; } = null!;
     }
 }

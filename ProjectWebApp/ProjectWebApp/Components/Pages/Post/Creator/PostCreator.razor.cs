@@ -44,10 +44,13 @@ public partial class PostCreator
 
     public sealed class InputModel
     {
+        [Required]
         [Display(Name = "Title")]
+        [StringLength(150, MinimumLength = 2, ErrorMessage = "Title must be 2-150 chars long")]
         public string Title { get; set; } = string.Empty;
         
         [Display(Name = "Bio")]
+        [StringLength(5000, MinimumLength = 2, ErrorMessage = "Description must be 2-5000 chars long")]
         public string Bio { get; set; } = string.Empty;
     }
 }

@@ -1,0 +1,24 @@
+@page "/Posts/{id:int}/Comments"
+@using ProjectWebApp.Models
+@using ProjectWebApp.Data
+<h3>@Post.Title comments</h3>
+
+<CommentCreator Post="Post"></CommentCreator>
+<CommentsList Post="Post"></CommentsList>
+
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    [Inject]
+    private ApplicationDbContext Context { get; set; }
+
+    private Post Post { get; set; } = null!;
+    
+    protected override void OnInitialized()
+    {
+        Post = Context.Posts!.Find(Id)!;
+    }
+
+}

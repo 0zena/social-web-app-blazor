@@ -4,13 +4,15 @@
 
 <RadzenStack>
 
-    @if (Comments != null)
+    @if (Comments != null || Comments != default)
     {
         foreach (var comment in Comments)
         {
             <CommentsItem Comment="comment"/>
         }
-    } else {
+    } 
+    else 
+    {
         <RadzenText>There is no comments yet</RadzenText>
     }
 

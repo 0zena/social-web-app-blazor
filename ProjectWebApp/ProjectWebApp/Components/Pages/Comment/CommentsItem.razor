@@ -2,7 +2,7 @@
 @using Radzen
 @using Radzen.Blazor
 
-<RadzenCard Variant="Variant.Flat">
+<RadzenCard Variant="Variant.Outlined">
     <RadzenText>@Comment.Content</RadzenText>
     
     <RadzenText>@Date</RadzenText>
@@ -12,5 +12,5 @@
     [Parameter] 
     public Comment Comment { get; set; } = null!;
 
-    private string Date => $"{Comment.Date.Month}.{Comment.Date.Day}";
+    private string Date => $"{Comment.Date.Day}.{Comment.Date.Month}.{Comment.Date.Year}";
 }

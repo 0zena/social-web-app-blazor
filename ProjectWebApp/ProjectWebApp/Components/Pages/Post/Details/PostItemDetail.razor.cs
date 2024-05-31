@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Components;
 using ProjectWebApp.Components.Account;
 using ProjectWebApp.Data;
@@ -23,6 +24,9 @@ public partial class PostItemDetail : ComponentBase
 
     [Inject]
     private IdentityRedirectManager RedirectManager { get; set; } = null!;
+    
+    [SupplyParameterFromForm]
+    private InputModel Model { get; set; } = new();
 
     private readonly DateTime _dateTime = DateTime.Now;
 
@@ -31,9 +35,7 @@ public partial class PostItemDetail : ComponentBase
     protected override void OnInitialized()
     {
         Post = Context.Posts?.Find(Id)!;
-        var some = Post.User;
     }
-    
 
     private async Task LikePost()
     {
@@ -62,11 +64,17 @@ public partial class PostItemDetail : ComponentBase
         await Context.SaveChangesAsync();
         RedirectManager.RedirectToCurrentPage();
     }
-
+    
     private async Task Delete()
     {
         Context?.Posts?.Remove(Post!);
         await Context!.SaveChangesAsync();
-        RedirectManager.RedirectTo("/");
+        RedirectManager.RedirectTo("/Posts");
+    }
+
+    public class InputModel
+    {
+        [StringLength(500, MinimumLength = 2, ErrorMessage = "Comment must be at 2 to 500 chars")] 
+        public string Content { get; set; } = null!;
     }
 }
