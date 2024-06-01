@@ -33,9 +33,11 @@ public partial class DashBoardUserItem : ComponentBase
     
     private List<Models.Comment>? Comments { get; set; }
 
-    private bool Disabled => !Posts.IsNullOrEmpty()
+    private bool DisableDeleteProfile => !Posts.IsNullOrEmpty()
                              || !Comments.IsNullOrEmpty()
                              || User == UserAccessor.GetRequiredUserAsync(HttpContext).Result;
+
+    private bool DisableDeleteBlog => Posts.IsNullOrEmpty();
 
     protected override void OnInitialized()
     {

@@ -7,9 +7,11 @@
 
 
 <main>
-    <RadzenHeading Text="@Post!.Title"></RadzenHeading>
-    <RadzenText Text="@Post?.Bio">
-    </RadzenText>
+    <div class="card">
+        <RadzenHeading Text="@Post!.Title" class="text-break"></RadzenHeading>
+        <RadzenText Text="@Post?.Bio" class="text-break">
+        </RadzenText>
+    </div>
 </main>
 
 @*<div class="btn-group">

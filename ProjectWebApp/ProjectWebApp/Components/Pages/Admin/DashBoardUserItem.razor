@@ -18,7 +18,8 @@
             <RadzenButton ButtonType="ButtonType.Submit"
                           Text="Delete blog"
                           ButtonStyle="ButtonStyle.Warning" 
-                          Variant="Variant.Text" />
+                          Variant="Variant.Text"
+                          disabled="@DisableDeleteBlog" />
         </EditForm>
     </td>
     <td>
@@ -26,7 +27,8 @@
             <RadzenButton Variant="Variant.Text" 
                           ButtonStyle="ButtonStyle.Danger" 
                           ButtonType="ButtonType.Submit" 
-                          disabled="@Disabled" Text="Delete profile" />
+                          disabled="@DisableDeleteProfile" 
+                          Text="Delete profile" />
         </EditForm>
     </td>
 </tr>
