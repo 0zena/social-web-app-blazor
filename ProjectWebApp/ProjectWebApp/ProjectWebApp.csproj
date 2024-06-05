@@ -18,12 +18,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Components\Post\Creator\PostCreator.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="Components\Pages\Post\Creator\PostCreator.razor" />
-  </ItemGroup>
-
 </Project>
