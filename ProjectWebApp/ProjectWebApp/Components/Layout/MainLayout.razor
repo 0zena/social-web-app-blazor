@@ -6,21 +6,19 @@
 <div class="page">
     <main>
         <div class="top-row px-4">
-            <div class="">
-                <NavLink href=""><RadzenButton Variant="Variant.Text" Text="Devs"></RadzenButton></NavLink>
-            </div>
-            <NavLink href="/Posts"><RadzenButton Variant="Variant.Text" Text="Posts"></RadzenButton></NavLink>
+            <NavLink href="" title="Home page"><RadzenButton Variant="Variant.Text" Text="Devs"></RadzenButton></NavLink>
+            <NavLink href="/Posts" title="Posts Page"><RadzenButton Variant="Variant.Text" Text="Posts"></RadzenButton></NavLink>
             <AuthorizeView>
                 <NotAuthorized>
-                    <NavLink href="/Account/Login"><RadzenButton Variant="Variant.Text" Text="Login"></RadzenButton></NavLink>
+                    <NavLink href="/Account/Login" title="Login Page"><RadzenButton Variant="Variant.Text" Text="Login"></RadzenButton></NavLink>
                 </NotAuthorized>
                 <Authorized>
-                    <NavLink href="/Posts/Create"><RadzenButton Variant="Variant.Text" Text="Create"></RadzenButton></NavLink>
-                    <NavLink href="/Account/Manage"><RadzenButton Variant="Variant.Text" Text="Profile"></RadzenButton></NavLink>
+                    <NavLink href="/Posts/Create" title="Create Post Page"><RadzenButton Variant="Variant.Text" Text="Create"></RadzenButton></NavLink>
+                    <NavLink href="/Account/Manage" title="Manage Page"><RadzenButton Variant="Variant.Text" Text="Profile"></RadzenButton></NavLink>
                 </Authorized>
             </AuthorizeView>
             <AuthorizeView Roles="Admin">
-                <NavLink href="/Admin/Dashboard"><RadzenButton Variant="Variant.Text" Text="Dashboard"></RadzenButton></NavLink>
+                <NavLink href="/Admin/Dashboard" title="Dashboard Page"><RadzenButton Variant="Variant.Text" Text="Dashboard"></RadzenButton></NavLink>
             </AuthorizeView>
         </div>
 

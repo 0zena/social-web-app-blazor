@@ -1,5 +1,8 @@
 ﻿@page "/Account/Manage/PersonalData"
 
+@using Radzen.Blazor
+@using Radzen
+
 @inject IdentityUserAccessor UserAccessor
 
 <PageTitle>Personal Data</PageTitle>
@@ -13,13 +16,26 @@
         <p>
             <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
         </p>
-        <form action="Account/Manage/DownloadPersonalData" method="post">
-            <AntiforgeryToken />
-            <button class="btn btn-primary" type="submit">Download</button>
-        </form>
-        <p>
-            <a href="Account/Manage/DeletePersonalData" class="btn btn-danger">Delete</a>
-        </p>
+        <div class="btn-group">
+            <form action="Account/Manage/DownloadPersonalData" method="post">
+                <AntiforgeryToken />
+                <RadzenButton ButtonType="ButtonType.Submit" 
+                                          Text="Download" 
+                                          Shade="Shade.Lighter"
+                                          title="Download" 
+                                          class="w-100 btn btn-lg btn-primary" />
+            </form>
+            <p>
+                <NavLink href="Account/Manage/DeletePersonalData">
+                    <RadzenButton ButtonType="ButtonType.Submit" 
+                                  Text="Delete" 
+                                  Shade="Shade.Lighter"
+                                  ButtonStyle="ButtonStyle.Danger"
+                                  title="Delete" 
+                                  class="w-100 btn btn-lg btn-primary" />
+                </NavLink>
+            </p>
+        </div>
     </div>
 </div>
 

@@ -6,6 +6,8 @@
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.WebUtilities
 @using ProjectWebApp.Data
+@using Radzen.Blazor
+@using Radzen
 
 @inject UserManager<ApplicationUser> UserManager
 @inject IEmailSender<ApplicationUser> EmailSender
@@ -48,7 +50,11 @@
                 <label for="new-email" class="form-label">New email</label>
                 <ValidationMessage For="() => Input.NewEmail" class="text-danger" />
             </div>
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Change email</button>
+            <RadzenButton ButtonType="ButtonType.Submit" 
+                                      Text="Change email" 
+                                      Shade="Shade.Lighter"
+                                      title="Change email" 
+                                      class="w-100 btn btn-lg btn-primary" />
         </EditForm>
     </div>
 </div>

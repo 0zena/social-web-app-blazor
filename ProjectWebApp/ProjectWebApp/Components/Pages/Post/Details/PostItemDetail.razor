@@ -7,11 +7,12 @@
 
 
 <main>
-    <div class="card">
+    <RadzenCard Variant="Variant.Outlined" class="border-shadow-hover">
+        <RadzenText Text="@Post?.User.UserName"></RadzenText>
         <RadzenHeading Text="@Post!.Title" class="text-break"></RadzenHeading>
         <RadzenText Text="@Post?.Bio" class="text-break">
         </RadzenText>
-    </div>
+    </RadzenCard>
 </main>
 
 @*<div class="btn-group">
@@ -36,7 +37,9 @@
 </div>*@
 <div class="btn-group">
     <RadzenStack AlignItems="AlignItems.Start">
-        <NavLink href=@($"/Posts/{Post!.ID}/Comments")><RadzenButton Text="Show comments" title="comments"/></NavLink>
+        <div class="btn-group">
+            <NavLink href=@($"/Posts/{Post!.ID}/Comments")><RadzenButton Text="Show comments" title="comments"/></NavLink>
+        </div>
     </RadzenStack>
     
     <RadzenStack JustifyContent="JustifyContent.Center" AlignItems="AlignItems.End">

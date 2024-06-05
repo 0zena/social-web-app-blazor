@@ -3,14 +3,7 @@
 @using Radzen.Blazor
 
 <RadzenCard Variant="Variant.Outlined">
-    <RadzenText class="text-break">@Comment.Content</RadzenText>
-    
+    <RadzenText class="text-break">@Comment?.User.UserName</RadzenText>
+    <RadzenText class="text-break">@Comment?.Content</RadzenText>
     <RadzenText>@Date</RadzenText>
 </RadzenCard>
-
-@code {
-    [Parameter] 
-    public Comment Comment { get; set; } = null!;
-
-    private string Date => $"{Comment.Date.Day}.{Comment.Date.Month}.{Comment.Date.Year}";
-}

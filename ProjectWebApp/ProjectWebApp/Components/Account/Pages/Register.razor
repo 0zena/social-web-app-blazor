@@ -6,6 +6,9 @@
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.WebUtilities
 @using ProjectWebApp.Data
+@using Radzen.Blazor
+@using Radzen
+
 @inject UserManager<ApplicationUser> UserManager
 @inject IUserStore<ApplicationUser> UserStore
 @inject SignInManager<ApplicationUser> SignInManager
@@ -41,7 +44,11 @@
                 <label for="confirm-password">Confirm Password</label>
                 <ValidationMessage For="() => Input.ConfirmPassword" class="text-danger" />
             </div>
-            <button type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <RadzenButton ButtonType="ButtonType.Submit" 
+                          Text="Register" 
+                          Shade="Shade.Lighter"
+                          title="Register"
+                          class="w-100 btn btn-lg btn-primary" />
         </EditForm>
     </div>
 </div>

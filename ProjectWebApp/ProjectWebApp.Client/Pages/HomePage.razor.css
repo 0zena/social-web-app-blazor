@@ -1,23 +1,49 @@
 .container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.sidebar {
+    text-align: center;
+}
+
+.sidebar img {
+    margin-bottom: 1rem;
+}
+
+.feed {
+    margin-bottom: 2rem;
+}
+
+.feed h5 {
+    margin-bottom: 1rem;
+}
+
+.post {
+    margin-bottom: 2rem;
+}
+
+.post h6 {
+    margin: 0;
+}
+
+.post small {
+    color: gray;
+}
+
+.list-unstyled li {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    align-items: center;
 }
 
-.card {
-    width: 30%;
-    border-radius: 20px;
-    
-    &, .card-title, .card-text, .card-footer, .card-body {
-        color: white;
-        background-color: #564f70;
-    }
+.list-unstyled img {
+    margin-right: 0.5rem;
 }
 
+.list-unstyled h6 {
+    margin: 0;
+}
 
-@media (max-width: 800px) {
-    .card {
-        width: 100%;
-        margin: 5px 0 0 0;
-    }
+.list-unstyled button {
+    margin-left: auto;
 }

@@ -1,53 +1,72 @@
 @page "/"
-
-<header class="d-flex align-items-center justify-content-center">
-    <h5>Social media platform for IT engineering specialists</h5>
-</header>
-
-<div class="container row">
-    <div class="card border-shadow-hover col-1">
-        <h5 class="card-title d-flex justify-content-center m-2">Share your skills</h5>
-        <div class="card-body">
-            <img alt="" src="./skill_transfering_brain_human_ideas_share_icon_188628.png" class="overflow-hidden w-100"/>
-            <p class="card-text">
-                With this product you can share your skills, knowledge and discoveries by publishing posts and scientific article.
-            </p>
+<AuthorizeView>
+    <NotAuthorized>
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <RadzenCard>
+                        <div class="text-center">
+                            <RadzenHeading Text="Welcome to Our Social Media Platform" />
+                            <div class="mt-4">
+                                <RadzenText>We're excited to have you here! Join us to connect with friends, share your knowledge, and explore what's happening around the tech world.</RadzenText>
+                            </div>
+                            <div class="mt-4">
+                                <NavLink href="/Account/Register">
+                                    <RadzenButton Text="Sign Up" Style="margin-right: 10px;" ButtonStyle="ButtonStyle.Primary"/>
+                                </NavLink>
+                                <NavLink href="/Account/Login">
+                                    <RadzenButton Text="Log In" ButtonStyle="ButtonStyle.Secondary"/>
+                                </NavLink>
+                            </div>
+                        </div>
+                    </RadzenCard>
+                </div>
+            </div>
         </div>
-        <div class="card-footer">See <NavLink href="/Posts">posts</NavLink></div>
-    </div>
-    <div class="card border-shadow-hover col-1">
-        <h5 class="card-title d-flex justify-content-center m-2">Find challenges</h5>
-        <div class="card-body">
-            <img alt="" src="./holographic_brain_hologram_virtual_brain_mind_visualization_cognitive_projection_icon_260868.png" class="overflow-hidden w-100" />
-            <p class="card-text">
-                Have a good idea, but don`t have time for coding? Now you can ask someone to do it without you.
-            </p>
+    </NotAuthorized>
+    <Authorized>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-3">
+                    <RadzenCard>
+                        <div class="sidebar">
+                            <RadzenText class="text-break" Text="@($"Welcome, {context.User.Identity?.Name!}")"></RadzenText>
+                            <img src="https://via.placeholder.com/150" class="img-fluid rounded-circle mb-3" alt="User profile picture">
+                            <button class="btn btn-primary w-100">Edit Profile</button>
+                        </div>
+                    </RadzenCard>
+                </div>
+                <div class="col-md-6">
+                    <RadzenCard>
+                        <div class="feed">
+                            <h5>Create Post</h5>
+                            
+                            <RadzenTextArea Placeholder="What's on your mind?" Rows="3" Style="width: 100%;"></RadzenTextArea>
+                            <button class="btn btn-primary mt-2">Post</button>
+                        </div>
+                    </RadzenCard>
+                    <RadzenCard Class="mt-4" *ngFor="let post of posts">
+                        <div class="post">
+                            <div class="d-flex justify-content-between">
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-outline-primary btn-sm">Like</button>
+                                <button class="btn btn-outline-primary btn-sm">Comment</button>
+                                <button class="btn btn-outline-primary btn-sm">Share</button>
+                            </div>
+                        </div>
+                    </RadzenCard>
+                </div>
+                <div class="col-md-3">
+                    <RadzenCard>
+                        <div class="sidebar">
+                            <h5>Suggested Friends</h5>
+                            <ul class="list-unstyled">
+                            </ul>
+                        </div>
+                    </RadzenCard>
+                </div>
+            </div>
         </div>
-        <div class="card-footer">Create your first <NavLink href="/Posts/Create">post</NavLink></div>
-    </div>
-    <div class="card border-shadow-hover col-1">
-        <h5 class="card-title d-flex justify-content-center m-2">Evaluates and reacts</h5>
-        <div class="card-body">asfas</div>
-        <div class="card-footer">Log in or create a new <NavLink href="/Account/Login">account</NavLink></div>
-    </div>
-</div>
-
-
-@code {
-    private IEnumerable<string> _sortType;
-
-    private string _type = "Oldest";
-
-    protected override void OnInitialized()
-    {
-        _sortType = new List<string> { "Oldest", "Newest" };
-        LoadPosts();
-    }
-    
-    private void LoadPosts()
-    {
-        StateHasChanged();
-    }
-    
-
-}
+    </Authorized>
+</AuthorizeView>

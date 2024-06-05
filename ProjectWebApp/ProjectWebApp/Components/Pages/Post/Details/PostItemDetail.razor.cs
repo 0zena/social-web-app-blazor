@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore;
 using ProjectWebApp.Components.Account;
 using ProjectWebApp.Data;
 using ProjectWebApp.Models;
@@ -30,11 +31,14 @@ public partial class PostItemDetail : ComponentBase
 
     private readonly DateTime _dateTime = DateTime.Now;
 
-    private string Title => Post?.Title ?? "Untitled";
-    
     protected override void OnInitialized()
     {
-        Post = Context.Posts?.Find(Id)!;
+        var posts = 
+            from p in Context.Posts?.Include(p => p.User).ToList()
+            where p.ID.Equals(Id)
+            select p;
+
+        Post = posts.FirstOrDefault()!;
     }
 
     private async Task LikePost()
@@ -55,9 +59,9 @@ public partial class PostItemDetail : ComponentBase
     {
         var like = new Dislike
         {
-            Post = Post!,
             User = await UserAccessor.GetRequiredUserAsync(HttpContext),
-            Date = _dateTime
+            Date = _dateTime,
+            Post = Post
         };
         
         Context.Dislikes!.Add(like);
@@ -67,7 +71,6 @@ public partial class PostItemDetail : ComponentBase
     
     private async Task Delete()
     {
-        Context?.Posts?.Remove(Post!);
         await Context!.SaveChangesAsync();
         RedirectManager.RedirectTo("/Posts");
     }

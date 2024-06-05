@@ -5,14 +5,13 @@
 @using ProjectWebApp.Data
 @using Microsoft.AspNetCore.Authorization
 @using Radzen.Blazor
+@using System.ComponentModel.DataAnnotations
+@using Radzen
 
 @inject UserManager<ApplicationUser> UserManager
+@inject ApplicationDbContext Context
 
 <RadzenHeading Text="Admin Dashboard"></RadzenHeading>
-
-<div class="rz-p-sm-12 rz-text-align-center">
-    <RadzenTextBox Placeholder="Search..." class="w-50"></RadzenTextBox>
-</div>
 
 <table class="table table-striped">
     <tr>

@@ -1,8 +1,9 @@
 ﻿@page "/Account/Manage/DeletePersonalData"
 
-@using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Identity
 @using ProjectWebApp.Data
+@using Radzen.Blazor
+@using Radzen
 
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
@@ -13,7 +14,7 @@
 
 <PageTitle>Delete Personal Data</PageTitle>
 
-<StatusMessage Message="@message" />
+<StatusMessage Message="@_message" />
 
 <h3>Delete Personal Data</h3>
 
@@ -27,7 +28,7 @@
     <EditForm Model="Input" FormName="delete-user" OnValidSubmit="OnValidSubmitAsync" method="post">
         <DataAnnotationsValidator />
         <ValidationSummary class="text-danger" role="alert" />
-        @if (requirePassword)
+        @if (_requirePassword)
         {
             <div class="form-floating mb-3">
                 <InputText type="password" @bind-Value="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Please enter your password." />
@@ -35,75 +36,24 @@
                 <ValidationMessage For="() => Input.Password" class="text-danger" />
             </div>
         }
-        <button class="w-100 btn btn-lg btn-danger" type="submit">Delete data and close my account</button>
+        <RadzenButton ButtonType="ButtonType.Submit"
+                      Text="Delete data and close my account"
+                      Shade="Shade.Lighter"
+                      ButtonStyle="ButtonStyle.Danger"
+                      title="Delete data and close my account"
+                      class="w-100 btn btn-lg btn-primary"
+                      Disabled="DisableDeleteProfile" />
     </EditForm>
 </div>
+
 <div>
     <EditForm Model="Context" FormName="delete-blog" OnValidSubmit="DeleteUsersBlog" method="post">
-        <button class="w-100 btn btn-lg btn-danger" type="submit">Delete blog</button>
+        <RadzenButton ButtonType="ButtonType.Submit"
+                      Text="Delete blog"
+                      Shade="Shade.Lighter"
+                      ButtonStyle="ButtonStyle.Danger"
+                      title="Delete blog"
+                      class="w-100 btn btn-lg btn-primary"
+                      Disabled="DisableDeleteBlog" />
     </EditForm>
 </div>
-
-@code {
-    private string? message;
-    private ApplicationUser user = default!;
-    private bool requirePassword;
-
-    [CascadingParameter]
-    private HttpContext HttpContext { get; set; } = default!;
-
-    [SupplyParameterFromForm]
-    private InputModel Input { get; set; } = new();
-
-    protected override async Task OnInitializedAsync()
-    {
-        Input ??= new();
-        user = await UserAccessor.GetRequiredUserAsync(HttpContext);
-        requirePassword = await UserManager.HasPasswordAsync(user);
-    }
-
-    private async Task OnValidSubmitAsync()
-    {
-        if (requirePassword && !await UserManager.CheckPasswordAsync(user, Input.Password))
-        {
-            message = "Error: Incorrect password.";
-            return;
-        }
-
-        var result = await UserManager.DeleteAsync(user);
-        if (!result.Succeeded)
-        {
-            throw new InvalidOperationException("Unexpected error occurred deleting user.");
-        }
-
-        await SignInManager.SignOutAsync();
-
-        var userId = await UserManager.GetUserIdAsync(user);
-        Logger.LogInformation("User with ID '{UserId}' deleted themselves.", userId);
-
-        RedirectManager.RedirectToCurrentPage();
-    }
-
-    private async Task DeleteUsersBlog()
-    {
-        await using (Context)
-        {
-            var posts = from p in Context.Posts
-                where p.User.Equals(user)
-                select p;
-
-            foreach (var post in posts)
-            {
-                Context?.Posts!.Remove(post);
-            }
-            await Context!.SaveChangesAsync();
-        }
-
-    }
-    
-    private sealed class InputModel
-    {
-        [DataType(DataType.Password)]
-        public string Password { get; set; } = string.Empty;
-    }
-}
