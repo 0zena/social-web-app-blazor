@@ -43,6 +43,7 @@ main {
     }
     
     .top-row {
+        padding-top: 26px;
         justify-content: space-between;
     }
     

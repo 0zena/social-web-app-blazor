@@ -1,10 +1,10 @@
 @using Radzen.Blazor
 @using Radzen
-
+@using Microsoft.IdentityModel.Tokens
 
 <RadzenStack>
 
-    @if (Comments != null || Comments != default)
+    @if (!Comments.IsNullOrEmpty())
     {
         foreach (var comment in Comments)
         {

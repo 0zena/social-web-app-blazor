@@ -1,7 +1,14 @@
 @page "/Posts/{id:int}/Comments"
 @using ProjectWebApp.Models
 @using ProjectWebApp.Data
-<h3>@Post.Title comments</h3>
+@using Radzen.Blazor
+@using Radzen
+
+<h3 class="mt-4">@Post.Title comments</h3>
+
+<NavLink href=@($"/Posts/{Post.ID}")>
+    <RadzenButton Icon="arrow_back" Variant="Variant.Text" Text="Back" />
+</NavLink>
 
 <CommentCreator Post="Post"></CommentCreator>
 <CommentsList Post="Post"></CommentsList>
@@ -11,8 +18,8 @@
     [Parameter]
     public int Id { get; set; }
 
-    [Inject]
-    private ApplicationDbContext Context { get; set; }
+    [Inject] 
+    private ApplicationDbContext Context { get; set; } = null!;
 
     private Post Post { get; set; } = null!;
     

@@ -3,30 +3,30 @@
 @using Radzen.Blazor
 @using Radzen
 
-<PageTitle>Post creator</PageTitle>
-
-
-<RadzenCard Variant="Variant.Outlined" class="w-100">
+<RadzenCard Variant="Variant.Outlined" class="w-100 mt-4">
     <RadzenHeading class="d-flex justify-content-center" Text="Create a new post"></RadzenHeading>
-    <div >
-        <EditForm Model="Input" asp-route-returnUrl="@ReturnUrl" method="post" OnValidSubmit="Create" FormName="create-post">
+    <div>
+        <EditForm Model="Input" OnValidSubmit="Create" FormName="create-post" class="d-flex justify-content-center">
             <hr/>
             <DataAnnotationsValidator/>
-            <div class="form-floating mb-3">
-                <InputText @bind-Value="@Input.Title" class="form-control"/>
-                <label>Title</label>
-                <ValidationMessage For="() => Input.Title"/>
+            <div class="input-container">
+                <div class="form-floating mb-3 d-flex justify-content-center">
+                    <InputText @bind-Value="@Input.Title" class="form-control"/>
+                    <label>Title</label>
+                    <ValidationMessage For="() => Input.Title"/>
+                </div>
+                <div class="form-floating mb-3 d-flex justify-content-center">
+                    <InputTextArea @bind-Value="@Input.Bio" class="form-control h-50" rows="3"/>
+                    <label>Bio</label>
+                    <ValidationMessage For="() => Input.Bio"/>
+                </div>
+                <RadzenButton ButtonType="ButtonType.Submit"
+                              Shade="Shade.Lighter"
+                              Text="Publish"
+                              title="Publish"
+                              class="w-100 btn btn-lg btn-primary"/>
             </div>
-            <div class="form-floating mb-3">
-                <InputTextArea @bind-Value="@Input.Bio" class="form-control h-35"/>
-                <label>Bio</label>
-                <ValidationMessage For="() => Input.Bio"/>
-            </div>
-            <RadzenButton ButtonType="ButtonType.Submit"
-                          Shade="Shade.Lighter"
-                          Text="Publish"
-                          title="Publish"
-                          class="w-100 btn btn-lg btn-primary"/>
         </EditForm>
     </div>
 </RadzenCard>
+

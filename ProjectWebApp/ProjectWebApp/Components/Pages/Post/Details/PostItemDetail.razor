@@ -6,8 +6,12 @@
 @using Radzen
 
 
-<main>
-    <RadzenCard Variant="Variant.Outlined" class="border-shadow-hover">
+<main class="mt-4">
+    <NavLink href="/Posts">
+        <RadzenButton Icon="arrow_back" Variant="Variant.Text" Text="Back"></RadzenButton>
+    </NavLink>
+    
+    <RadzenCard Variant="Variant.Outlined" class="border-shadow-hover mt-4">
         <RadzenText Text="@Post?.User.UserName"></RadzenText>
         <RadzenHeading Text="@Post!.Title" class="text-break"></RadzenHeading>
         <RadzenText Text="@Post?.Bio" class="text-break">
@@ -35,7 +39,7 @@
         </span>
     </EditForm>
 </div>*@
-<div class="btn-group">
+<div class="btn-group mt-2">
     <RadzenStack AlignItems="AlignItems.Start">
         <div class="btn-group">
             <NavLink href=@($"/Posts/{Post!.ID}/Comments")><RadzenButton Text="Show comments" title="comments"/></NavLink>

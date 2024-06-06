@@ -30,39 +30,28 @@
                 <div class="col-md-3">
                     <RadzenCard>
                         <div class="sidebar">
-                            <RadzenText class="text-break" Text="@($"Welcome, {context.User.Identity?.Name!}")"></RadzenText>
-                            <img src="https://via.placeholder.com/150" class="img-fluid rounded-circle mb-3" alt="User profile picture">
-                            <button class="btn btn-primary w-100">Edit Profile</button>
+                            <RadzenText class="text-break d-flex justify-content-center" 
+                                        Text="@($"Welcome, {context.User.Identity?.Name!}")" />
+                            <div class="d-flex justify-content-center">
+                                <img src="https://via.placeholder.com/150" 
+                                     class="img-fluid rounded-circle mb-3" 
+                                     alt="User profile picture">
+                            </div>
+                            <NavLink href="/Account/Manage">
+                                <RadzenButton Variant="Variant.Filled" 
+                                              Shade="Shade.Lighter" 
+                                              Text="Edit Profile" 
+                                              class="w-100" />
+                            </NavLink>
                         </div>
                     </RadzenCard>
                 </div>
                 <div class="col-md-6">
                     <RadzenCard>
                         <div class="feed">
-                            <h5>Create Post</h5>
-                            
-                            <RadzenTextArea Placeholder="What's on your mind?" Rows="3" Style="width: 100%;"></RadzenTextArea>
-                            <button class="btn btn-primary mt-2">Post</button>
-                        </div>
-                    </RadzenCard>
-                    <RadzenCard Class="mt-4" *ngFor="let post of posts">
-                        <div class="post">
-                            <div class="d-flex justify-content-between">
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button class="btn btn-outline-primary btn-sm">Like</button>
-                                <button class="btn btn-outline-primary btn-sm">Comment</button>
-                                <button class="btn btn-outline-primary btn-sm">Share</button>
-                            </div>
-                        </div>
-                    </RadzenCard>
-                </div>
-                <div class="col-md-3">
-                    <RadzenCard>
-                        <div class="sidebar">
-                            <h5>Suggested Friends</h5>
-                            <ul class="list-unstyled">
-                            </ul>
+                            <h5></h5>
+                            <RadzenTextArea Placeholder="" Rows="3" Style="width: 100%;"></RadzenTextArea>
+                            <button class="btn btn-primary mt-2"></button>
                         </div>
                     </RadzenCard>
                 </div>
