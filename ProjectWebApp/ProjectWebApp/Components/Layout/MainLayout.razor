@@ -6,25 +6,74 @@
 <div class="page">
     <main>
         <div class="top-row px-4">
-            <NavLink href="" title="Home page"><RadzenButton Variant="Variant.Text" Text="Devs"></RadzenButton></NavLink>
-            <NavLink href="/Posts" title="Posts Page"><RadzenButton Variant="Variant.Text" Text="Posts"></RadzenButton></NavLink>
+            <NavLink class="btn-link" href="" title="Home page">
+                <RadzenButton Class="rz-display-inline-block rz-display-sm-none" 
+                              Variant="Variant.Text" 
+                              Icon="home" ButtonStyle="ButtonStyle.Primary" 
+                              Size="ButtonSize.Medium" />
+                <RadzenButton Class="rz-display-none rz-display-sm-inline-block" 
+                              Variant="Variant.Text" Text="Home" 
+                              Icon="home" ButtonStyle="ButtonStyle.Primary" 
+                              Size="ButtonSize.Medium" />
+            </NavLink>
+            <NavLink href="/Posts"title="Posts Page">
+                <RadzenButton Class="rz-display-inline-block rz-display-sm-none" 
+                              Variant="Variant.Text" 
+                              Icon="feed" ButtonStyle="ButtonStyle.Primary" 
+                              Size="ButtonSize.Medium" />
+                <RadzenButton Class="rz-display-none rz-display-sm-inline-block" 
+                              Variant="Variant.Text" Text="Posts" 
+                              Icon="feed" ButtonStyle="ButtonStyle.Primary" 
+                              Size="ButtonSize.Medium" />
+            </NavLink>
             <AuthorizeView>
                 <NotAuthorized>
-                    <NavLink href="/Account/Login" title="Login Page"><RadzenButton Variant="Variant.Text" Text="Login"></RadzenButton></NavLink>
+                    <NavLink href="/Account/Login" title="Login Page">
+                        <RadzenButton Variant="Variant.Text" Text="Login" />
+                    </NavLink>
                 </NotAuthorized>
                 <Authorized>
-                    <NavLink href="/Posts/Create" title="Create Post Page"><RadzenButton Variant="Variant.Text" Text="Create"></RadzenButton></NavLink>
-                    <NavLink href="/Account/Manage" title="Manage Page"><RadzenButton Variant="Variant.Text" Text="Profile"></RadzenButton></NavLink>
+                    <NavLink href="/Posts/Create" title="Create Post Page">
+                        <RadzenButton Class="rz-display-inline-block rz-display-sm-none" 
+                                      Variant="Variant.Text" 
+                                      Icon="add" ButtonStyle="ButtonStyle.Primary" 
+                                      Size="ButtonSize.Medium" />
+                        <RadzenButton Class="rz-display-none rz-display-sm-inline-block" 
+                                      Variant="Variant.Text" Text="Create" 
+                                      Icon="add" ButtonStyle="ButtonStyle.Primary" 
+                                      Size="ButtonSize.Medium" />
+                    </NavLink>
+                    <NavLink href="/Account/Manage" title="Manage Page">
+                        <RadzenButton Class="rz-display-inline-block rz-display-sm-none" 
+                                      Variant="Variant.Text" 
+                                      Icon="manage_accounts" ButtonStyle="ButtonStyle.Primary" 
+                                      Size="ButtonSize.Medium" />
+                        <RadzenButton Class="rz-display-none rz-display-sm-inline-block" 
+                                      Variant="Variant.Text" Text="Profile" 
+                                      Icon="manage_accounts" ButtonStyle="ButtonStyle.Primary" 
+                                      Size="ButtonSize.Medium" />
+                    </NavLink>
                 </Authorized>
             </AuthorizeView>
             <AuthorizeView Roles="Admin">
-                <NavLink href="/Admin/Dashboard" title="Dashboard Page"><RadzenButton Variant="Variant.Text" Text="Dashboard"></RadzenButton></NavLink>
+                <NavLink href="/Admin/Dashboard" title="Dashboard Page">
+                    <RadzenButton Class="rz-display-inline-block rz-display-sm-none" 
+                                  Variant="Variant.Text" 
+                                  Icon="dashboard" ButtonStyle="ButtonStyle.Primary" 
+                                  Size="ButtonSize.Medium" />
+                    <RadzenButton Class="rz-display-none rz-display-sm-inline-block" 
+                                  Variant="Variant.Text" Text="Profile" 
+                                  Icon="dashboard" ButtonStyle="ButtonStyle.Primary" 
+                                  Size="ButtonSize.Medium" />
+                </NavLink>
             </AuthorizeView>
         </div>
 
-        <article class="content">
-            @Body
-        </article>
+        <div class="content-container">
+            <article class="content w-75">
+                @Body
+            </article>
+        </div>
     </main>
 </div>
 

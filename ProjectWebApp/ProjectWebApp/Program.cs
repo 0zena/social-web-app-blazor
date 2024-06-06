@@ -91,6 +91,7 @@ using (var scope = app.Services.CreateScope())
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
     // For testing purposes only
+    const string username = "Admin";
     const string email = "admin@admin.com";
     const string password = "AdminTemp731*";
 
@@ -98,8 +99,8 @@ using (var scope = app.Services.CreateScope())
     {
         var newUser = new ApplicationUser
         {
+            UserName = username,
             Email = email,
-            UserName = email,
             EmailConfirmed = true
         };
 
