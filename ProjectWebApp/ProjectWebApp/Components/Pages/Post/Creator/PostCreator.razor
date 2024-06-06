@@ -10,12 +10,12 @@
             <hr/>
             <DataAnnotationsValidator/>
             <div class="input-container">
-                <div class="form-floating mb-3 d-flex justify-content-center">
+                <div class="form-floating mb-3">
                     <InputText @bind-Value="@Input.Title" class="form-control"/>
                     <label>Title</label>
                     <ValidationMessage For="() => Input.Title"/>
                 </div>
-                <div class="form-floating mb-3 d-flex justify-content-center">
+                <div class="form-floating mb-3">
                     <InputTextArea @bind-Value="@Input.Bio" class="form-control h-50" rows="3"/>
                     <label>Bio</label>
                     <ValidationMessage For="() => Input.Bio"/>
